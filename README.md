@@ -1,9 +1,10 @@
 # Lab 05: University AI Assistant using Retrieval-Augmented Generation (RAG)
 
 ## 📌 Overview
-This laboratory activity implements a document-grounded **University AI Assistant** using a **Retrieval-Augmented Generation (RAG)** architecture enhanced with **Cross-Encoder Reranking**. 
+This lab implements a document based ‘University AI Assistant’ using a Retrieval Augmented Generation framework, and includes Cross Encoder Reranking functionality.
 
-Instead of relying purely on a Large Language Model's pre-trained knowledge, this system ingests local university documents (such as degree handbooks and brochures), converts them into vector embeddings stored in **ChromaDB**, retrieves and reranks the most relevant passages, and uses a local LLM (**Llama 3.2 3B** via Ollama) to generate accurate, cited answers. It features both a Command-Line Interface (CLI) and an interactive **Streamlit** web application that supports multi-PDF uploads.
+Whilst Large Language Models are powerful in their inbuilt knowledge alone, this system processes University documents (for example, information about degrees and university brochures), produces vector representations of them and saves these to a ChromaDB. Appropriate sections are then retrieved and reordered by importance and finally used as input for a Local Large Language Model (Llama 3.2 3B – accessed via Ollama) to produce well referenced, correct responses. There is also a Command Line Interface alongside a Streamlit based, web-based UI, which allows for multiple PDF files to be uploaded.
+
 
 ---
 
@@ -34,21 +35,21 @@ Lab-05-AI-Agents/
 
 ## 🧠 System Architecture & Code Breakdown
 
-### 1. Document Ingestion Pipeline (`ingest.py` & `run_ingest.py`)
-* **Validation & Deduplication:** Uses SHA-256 content hashing (`hashlib.sha256`) on uploaded PDF bytes to prevent duplicate indexing of identical documents. If a document hash already exists in ChromaDB, ingestion is skipped (`Already indexed: ...`).
-* **Text Extraction & Chunking:** Utilizes `PyMuPDFLoader` to extract text page-by-page and splits it using `RecursiveCharacterTextSplitter` (`chunk_size=1000`, `chunk_overlap=150`) to preserve semantic context across boundaries.
-* **Embedding & Vector Storage:** Uses Ollama's `qwen3-embedding:0.6b` model to generate vector embeddings and persists them locally in **ChromaDB** under the collection `university_knowledge`.
-* **CLI Batch Ingestion (`run_ingest.py`):** Simulates a file upload via a `CLIUploadedFile` wrapper to index the initial `COMPUTING AWARD HANDBOOK_MOHE (2).pdf` prior to launching the UI.
+### 1. Document Processing (ingest.py & run_ingest.py)
+* **Duplicate Detection: Uploaded PDFs are analysed by firstly converting them into bytes. These are then hashed (using hashlib.sha256) so that if they have previously been indexed (already indexed: ...) processing ceases.
+* *Text Extraction & Sectioning: Text is page-wise extracted from PDFs using PyMuPDFLoader. This is then sectioned using the RecursiveCharacterTextSplitter method (chunk size = 1000, chunk overlap = 150) so that each section is still contextually coherent.
+* **Vector Creation & Saving: Vector representations are produced with Ollama’s qwen3-embedding:0.6b model. These are then locally saved into a ChromaDB collection called university_knowledge.
+* **Command Line Interface Processing (run_ingest.py): A CLIUploadedFile class is used to emulate a file being uploaded. This is then used to process and index the initial COMPUTING AWARD HANDBOOK_MOHE (2).pdf file. Subsequently the UI can be opened.
 
-### 2. Retrieval, Reranking & Generation (`rag_pipeline.py`)
+### 2. Retrieval, Reranking, Response Generation (rag_pipeline.py)
 * **Two-Stage Retrieval (Retrieve & Rerank):**
   1. **Broad Vector Search:** Queries ChromaDB for the top $k=10$ semantically similar chunks.
   2. **Cross-Encoder Reranking:** Passes `(question, chunk)` pairs through `cross-encoder/ms-marco-MiniLM-L-6-v2` to score true contextual relevance, keeping only the **top 3 highest-scoring chunks**.
 * **Grounded Prompt Engineering:** Feeds the top 3 chunks into `ChatOllama` (`llama3.2:3b`, `temperature=0`) with strict system instructions to prevent hallucination, cite sources (`[Source N]`), and abstain if the answer is not in the documents.
 
 ### 3. Interactive Web Interface (`app.py`)
-* **Multi-PDF Knowledge Base Sidebar:** Allows users to upload multiple PDFs simultaneously, tracks progress with a live progress bar, and lists all currently indexed PDFs in `data/`.
-* **Conversational Chat UI:** Maintains conversation history via `st.session_state.messages` and provides expandable **"View Retrieved Sources"** dropdowns displaying the exact source document name and page number for every answer.
+* **Sidebar Document Repository: Multiple PDF files can be uploaded. Progress is shown in real time and the names of all currently indexed PDFs are displayed in the data/ folder.
+* **Conversational Chat UI:** Previous chat messages are recorded within st.session_state.messages. Furthermore, each answer includes a ‘View Retrieved Sources’ menu which can be clicked to show the precise source document and page number.
 
 ---
 
@@ -85,15 +86,14 @@ Below is a detailed breakdown of what occurred during execution, based on the ca
 * **Screenshot Reference:** `screenshots/run_ingest_sc.png`
 
 ### 2. CLI RAG Pipeline Verification (`rag_pipeline.py`)
-* **What Happened:** Running `python rag_pipeline.py` loaded the `ms-marco-MiniLM-L-6-v2` Cross-Encoder weights (`105/105` layers) and initiated an interactive terminal prompt.
-* **Test Query:** *"Details about Software engineering?"*
-* **Result Analysis:** The pipeline retrieved 10 chunks, reranked them down to the top 3 most relevant pages (**Pages 6 and 9** of the MOHE Computing Award Handbook), and generated a structured breakdown covering ACM/IEEE alignment, year-by-year curriculum structure (compulsory 3rd-year industry training, 4th-year individual project), and 8 career pathways.
-* **Screenshot Reference:** `screenshots/rag_pipeline_screenshot.png`
+* **What Happened:** Firstly, the python rag_pipeline.py code loaded the Cross Encoder ms-marco-MiniLM-L-6-v2 weights (105/105 layers). An interactive command Line Interface was then opened.
+* **Sample Question:** *"Details about Software engineering?"*
+* **Result Analysis:** Corresponding sections were successfully retrieved. These were then reduced to the 3 most relevant pages (page 6 and 9 of the MOHE Computing Award Handbook). Finally, a structured response was outputted describing: ACM/IEEE conformity; the 3 year programme format (mandatory third year industry experience and a self-directed fourth year project); and 8 distinct career routes.* **Screenshot Reference:** `screenshots/rag_pipeline_screenshot.png`
 
 ### 3. Launching the Streamlit Web Application (`app.py`)
-* **Troubleshooting Note:** Running `python app.py` directly triggered `missing ScriptRunContext!` warnings because Streamlit requires its own server runtime to manage browser sessions.
-* **Resolution:** Launching via `streamlit run app.py` started the Uvicorn/Streamlit web server on `http://localhost:8501`.
+* **Troubleshooting Note:** Attempting to open python app.py produced ScriptRunContext! errors as Streamlit needs its own web server in order to handle browser session information.
+* **Resolution:** Using streamlit run app.py launched a Uvicorn/Streamlit web server at http://localhost:8501.
 * **UI Capabilities Verified:**
-  * Initial interface rendering (`screenshots/streamlit_app_success.png` & `screenshots/Uni_Ai_Assistant.png`).
-  * Uploading and indexing additional university PDFs (e.g., *NSBM Sri Lanka Brochure*) via the sidebar (`screenshots/upload_doc_success.png`).
-  * Querying across multiple documents with expandable source citations (`screenshots/Output_of_ai_question.png`).
+  *Correct initial display of the UI (screenshots/streamlit_app_success.png, screenshots/Uni_Ai_Assistant.png).
+  * Successful uploading and processing of further university PDFs (for example, the NSBM Sri Lanka Brochure) via the UI sidebar (screenshots/upload_doc_success.png).
+  * Cross document querying with reference menus (screenshots/Output_of_ai_question.png).
