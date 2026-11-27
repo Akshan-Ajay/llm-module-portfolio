@@ -1,7 +1,6 @@
 # Lab 06: Building Tool-Using AI Agents with Ollama, Persistent Memory, RAG & n8n Automation
 
 **Module:** PUSL 3205 — Large Language Models and Generative AI  
-**Programme:** MSc in Artificial Intelligence  
 **Environment:** Windows 11 | Python 3.12 (`rag_env`) | Ollama (`llama3.2:3b`, `qwen3-embedding:0.6b`) | LangChain | ChromaDB | SQLite | Docker & n8n  
 
 ---
