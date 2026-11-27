@@ -7,38 +7,29 @@
 
 ## 1. Lab Objective & Assigned Challenge
 
-The objective of **Lab 02** was to apply Large Language Models (LLMs) to an everyday challenge faced by university students—developing critical thinking, problem-solving, and creative design skills while exploring how AI can be applied to real-world situations.
+The task for this lab was to utilise LLMs and develop our own problem solving and design skills to investigate how AI can be used to help solve common issues.
 
 ### Group 3 — The Food Waster
-University students often buy more food than they can eat, forget perishable items they have stored, or discard leftovers because they do not know what to make with them. At the same time, other students on campus are looking for affordable food options. Our goal was to use an LLM as a product-development partner to conceptualize an innovative product or service that reduces unnecessary student food waste.
+Many university students purchase too much food, and then either forget or are unable to utilise food that has been stored. Students also often do not know how to re-use food and so will throw it away. Concurrently, there are many students on campus who wish to eat cheaply. We aimed to therefore utilise an LLM as a co-creator and devise a novel product or service which helps to decrease students’ avoidable food waste.
 
 ---
 
-## 2. Group Members
 
-| Name | Student ID | Key Contributions |
-| :--- | :--- | :--- |
-| **Suthakaran Akshan** | 10967118 | Problem framing, LLM brainstorming & prompt design, system/feature conceptualisation, slide preparation, and presentation |
-| **Wcn Coonghe** | 10965216 | Research on student food waste & campus sharing ideas, feature/workflow refinement, slide preparation, and presentation |
-| **Nishovithan** | 10965286 | Concept evaluation, user journey & scenario thinking, slide preparation, and presentation |
+## 2. What We Did During the Lab Session
 
----
-
-## 3. What We Did During the Lab Session
-
-1. **Idea Selection & Problem Exploration:** Analyzed why students overbuy groceries or waste leftovers in hostels/shared housing and identified the dual opportunity to connect surplus food with budget-conscious peers.
-2. **LLM-Assisted Ideation & Scoping:** Used an LLM as a brainstorming partner to refine features, define student constraints (limited dorm cooking equipment, tight budgets, short prep times), and structure a cohesive product concept (**FoodLoop**).
-3. **Conceptual Architecture & AI Role Separation:** Mapped out how data moves through the proposed system and clearly separated responsibilities between different AI approaches:
-   * **Food Recognition (Vision / Barcode):** Conceptual item and quantity logging via photo, barcode scan, or manual entry.
-   * **Random Forest Regressor (Proposed Tabular ML):** Learns from a user's historical purchase, usage, and waste logs to recommend realistic buying quantities on future shopping trips.
-   * **LLM Assistant (Generative AI):** Suggests practical meals from ingredients the user already has on hand and assists with clear marketplace listings.
-4. **Visual Mock-ups & Presentation Slides:** Designed a system architecture diagram and mobile UI mock-ups, compiled the solution into a slide deck, and delivered a 2–3 minute group presentation.
+1. Problem Exploration: Examined why university students tend to purchase and also unnecessarily dispose of food and recognised that there was potential to link students together – those with excess food and those wishing to save money.
+2. LLM Brainstorm and definition: Worked with an LLM to further develop key functionality. Identified student cooking limitations (such as lack of cooking facilities in university residences) alongside their financial and time restraints. Developed an integrated solution – ‘FoodLoop’.
+3. Functionality and AI specialisation: Defined the flow of data within the system and specialised which areas of AI would be most applicable:
+   * Food Identification (vision & bar-coding): Enables food and associated volumes to be recognised either photographically, by bar-coding or via direct input.
+   * Random Forest Regressor (Proposed Tabular AI): Analyses users’ previous purchasing, consumption and disposal information to advise on optimal future buying volumes.
+   * LLM Assistant (generative AI): Provides students with easy-to-prepare recipes using their current stock and helps to effectively interpret and present market place information.
+4. **Visual Mock-ups & Presentation Slides:** Created system flow and mobile interface designs. Developed a presentation to summarise the solution and presented this to the group (2-3 minutes).
 
 ---
 
 ## 4. Product Concept Overview: FoodLoop
 
-**FoodLoop** is a conceptual mobile application designed to help students track the food they buy, use, and waste, turn expiring ingredients into practical meals, optimize future grocery quantities, and share or sell suitable surplus food within a campus marketplace.
+**FoodLoop** is an envisioned mobile application which enables university students to monitor their food purchasing, consumption and disposal. It can then transform students’ surplus food into easy-to-prepare dishes. Additionally, it can advise on ideal future purchasing volumes. Finally, it facilitates students to both list and sell underutilised food on a campus wide, cost-effective marketplace, so that appropriate food can be obtained by others.
 
 ### Target Users
 * **Primary Users:** University students living in hostels, boarding houses, or shared apartments who manage their own groceries and risk forgetting items or discarding leftovers.
