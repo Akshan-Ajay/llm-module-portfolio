@@ -1,18 +1,27 @@
 # Group Discussion Summary — Using LLMs as a Product-Development Partner
 
 ## 1. Lab Approach & Working Process
-Rather than building or coding a working application during lab time, our group focused on **critical thinking, idea exploration, research, structuring a clear solution in presentation slides, and delivering our presentation**. We used an LLM as a thinking and brainstorming partner to test ideas, structure features, and clarify how different AI components fit together.
+
+During the lab, rather than creating working software, our group analysed a problem, and then considered and created ideas to address it. We then designed slides to present our ideas.
+
+An LLM was utilised as a ‘brainstorming and product development partner’ to support us in developing our ideas. It also enabled us to determine appropriate functionality and to analyse which AI technologies may be combined to solve our problem.
 
 ## 2. Key Points Discussed by the Group
-* **Defining the Student Food Waste Problem:** Students often buy extra food or keep leftovers without a clear plan to use them, leading to avoidable waste, while other students want affordable food options.
-* **Clarifying Separate Roles for AI Components:** In our discussion and presentation, we distinguished between:
-  * **LLM capabilities** for flexible, creative tasks such as suggesting recipes from available ingredients and helping shape user-facing ideas/descriptions.
-  * **Tabular ML (Random Forest Regressor)** as a proposed model to learn from past purchase, usage, and waste records to recommend more realistic buying quantities over time.
-* **Practicality & Responsibility in Sharing Extra Food:** We noted that sharing or selling extra food should focus on *suitable* food so items remain safe and useful for peers.
+* **Defining the Student Food Waste Problem:** Often, students purchase or stock more food than they require. Students can then fail to utilise or even dispose of this food. Furthermore, there is commonly demand amongst students for low cost food.
+* **AI Components:** Our group considered how various AI functions might be deployed to address our problem and create our product.
+  * **Large Language Model (LLM)** We recognised that an LLM is appropriate for more adaptable and innovative functions including:
+Formulation of recipes using ingredients that a student has.
+Offering advice and ideas aligned to a user’s needs.
+Production of details for a marketplace so that people can share or trade food.
 
-## 3. How LLMs Helped During Lab Brainstorming
+  * **Machine Learning – Random Forest Regressor** A Random Forest Regressor could be used to assess students’ past buying, eating and food wastage behaviour. Using historic information, this could then help to advise a student on optimal future quantities of food to buy.
+
+* **Practicality & Responsibility in Sharing Extra Food:** Furthermore, we considered how vital it is to maintain food safety in a food sharing or trading environment. Appropriate foods must be added to a marketplace so that students can safely and effectively share food.
+
+
+## 3. How we used the LLM
 * **Idea & Feature Expansion:** Helped turn the core problem (*The Food Waster*) into a cohesive concept (**FoodLoop**) linking personal tracking, expiry reminders, recipe ideas, smart buying suggestions, and a sharing marketplace.
 * **Structuring the Solution for Slides:** Helped organize our thoughts logically so we could explain the problem, product concept, workflow, and AI roles clearly within a short 2–3 minute presentation.
 
 ## 4. Reflection
-Working through the problem conceptually with an LLM allowed our group to focus on **problem-solution fit, clear system logic, and effective communication** in our slides and presentation without getting bogged down in code implementation.
+I recognised that apart from its function as a text generation tool, an LLM can act as a valuable ‘brainstorming and product development partner’. It enables someone to develop their ideas, investigate issues and devise solutions.
