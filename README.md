@@ -2,15 +2,16 @@
 
 ## Overview
 
-This laboratory focuses on fine-tuning a pre-trained Large Language Model (LLM) using **QLoRA (Quantized Low-Rank Adaptation)** and Supervised Fine-Tuning (SFT).
+This lab explored how to fine-tune a pre-trained Large Language Model (LLM), utilising both QLoRA and Supervised Fine Tuning.
 
-For this lab, I used the `Qwen/Qwen2.5-0.5B-Instruct` model and fine-tuned it to work as a customer service assistant for a computer shop located in Homagama, Sri Lanka.
+I used the Qwen/Qwen2.5-0.5B-Instruct model and fine-tuned it to provide a ‘computer shop’ customer service model. The computer shop is situated in Homagama, Sri Lanka.
 
-The main purpose of this activity was to understand how a pre-trained language model can be adapted to answer questions related to a specific domain using a custom dataset.
+The objective was to explore how a pre-trained language model can be fine-tuned so that it can respond to questions within a defined area of expertise, by using an original bespoke dataset.
+
 
 ## Lab Objectives
 
-- Understand the basic concept of fine-tuning a pre-trained language model.
+- To comprehend the fundamentals of fine-tuning.
 - Set up a GPU environment using Google Colab.
 - Create a custom dataset containing 30 question-and-answer pairs related to a computer shop.
 - Apply 4-bit quantization and QLoRA to reduce GPU memory usage during training.
@@ -44,9 +45,9 @@ pip install -q transformers datasets peft trl accelerate bitsandbytes
 
 ### 1. Environment Setup and GPU Verification
 
-First, I installed the required libraries and checked whether a GPU was available in Google Colab.
+I installed the relevant libraries, and verified that a GPU was available in my Google Colab environment.
 
-The GPU environment was used to make the fine-tuning process faster and to handle the model training efficiently.
+A GPU was used to both speed-up and effectively manage the fine-tuning and training of a model.
 
 - **GPU:** NVIDIA Tesla T4
 - **Total VRAM:** 14.56 GB
@@ -55,13 +56,13 @@ The GPU environment was used to make the fine-tuning process faster and to handl
 
 For this activity, I selected the `Qwen/Qwen2.5-0.5B-Instruct` model.
 
-The tokenizer was also loaded using Hugging Face Transformers. The EOS token was configured as the padding token, and right-side padding was enabled.
+Furthermore, I also loaded and set up the associated model tokeniser. The end of sequence (EOS) token was designated as the padding token and right-padding was activated.
 
 ### 3. Custom Dataset Creation
 
 I created a custom dataset containing **30 question-and-answer pairs** based on a local computer shop.
 
-The dataset covers different topics, including:
+I developed a bespoke dataset, which contained 30 question and answer pairs relating to a local computer shop.
 
 - Computer hardware and accessories
 - Laptop and PC repair services
@@ -71,7 +72,7 @@ The dataset covers different topics, including:
 - Store location and opening hours
 - Technical support and maintenance
 
-Each question and answer was formatted using the following instruction template:
+Each query and answer pair was structured as follows:
 
 ```text
 ### Instruction:
@@ -85,9 +86,10 @@ The formatted dataset was then converted into a Hugging Face Dataset object for 
 
 ### 4. QLoRA Configuration
 
-In this step, I configured QLoRA to fine-tune the model while reducing GPU memory requirements.
+QLoRA was set-up so that I could fine-tune my model and simultaneously decrease the GPU’s memory usage.
 
-The model was loaded using 4-bit quantization with the NF4 quantization type and FP16 computation.
+4-bit quantisation (using the ‘NF4’ quantisation method) was applied and calculations were conducted in FP16 format.
+
 
 The main configurations were:
 
@@ -119,7 +121,7 @@ The following model modules were selected as LoRA target modules:
 
 ### 5. Model Training
 
-After configuring QLoRA and LoRA, I used `SFTTrainer` from the TRL library to perform supervised fine-tuning.
+Having set-up my QLoRA and LoRA settings, I conducted supervised fine-tuning by using the ‘SFTTrainer’ class from the TRL library.
 
 The main training configurations were:
 
@@ -132,7 +134,7 @@ The main training configurations were:
 | Optimizer | paged_adamw_8bit |
 | Maximum Sequence Length | 512 |
 
-The model was trained using the custom computer shop dataset.
+Training of my model was then carried out using my bespoke computer shop dataset.
 
 ### 6. Model Evaluation
 
@@ -180,8 +182,8 @@ Lab-04-Fine-Tune/
 
 ## Conclusion
 
-Through this laboratory activity, I gained practical experience in fine-tuning a pre-trained language model using QLoRA and supervised fine-tuning.
+I have therefore practically explored how to fine-tune a pre-trained language model by using both QLoRA and supervised fine-tuning.
 
-I learned how 4-bit quantization and LoRA can help reduce the computational requirements of model training. I also understood how a custom dataset can be used to adapt an existing language model to a specific domain.
+I ascertained how 4-bit quantisation and LoRA can be used to lessen the computational needs of model training. In addition, I analysed how a bespoke dataset can be used to specialise an already existing language model.
 
-Finally, comparing the base model and the fine-tuned model helped me understand the impact of fine-tuning on domain-specific question answering.
+Ultimately, my analysis of the base and fine-tuned models enabled me to investigate how effective fine-tuning can be in specialising a model’s ability to answer queries in a defined area of expertise.
