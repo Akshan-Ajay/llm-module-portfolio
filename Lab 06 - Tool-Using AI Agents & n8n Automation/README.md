@@ -22,14 +22,14 @@
 
 ## 🎯 1. Executive Summary & Objectives
 
-Standard Large Language Models (LLMs) are stateless text generators limited by their training cutoffs and inability to interact directly with external operating systems, databases, or live APIs. This laboratory activity bridges that gap by engineering **autonomous, tool-using AI agents** running completely locally via **Ollama** (`llama3.2:3b`) and orchestrated through **LangChain** and **n8n**.
+Whilst most large language models are static and cannot access or engage directly with operating systems, APIs or other data sources, this laboratory utilised LangChain and n8n to develop self-operating AI agents that can utilise tools and operate fully on-device using the **Ollama** platform (llama3.2:3b).
 
-Across five progressive engineering stages, this lab demonstrates how to:
-* **Bind deterministic Python tools** to a local LLM using structured tool-calling schemas (`llm.bind_tools()`).
-* **Automate native Windows GUI applications** (`calc.exe`, `notepad.exe`) and file system operations via `pyautogui`, `pygetwindow`, `subprocess`, and `glob`.
-* **Engineer dual-layer memory architectures** combining in-session short-term conversation context with persistent long-term storage in **SQLite** (`student_memory.db`).
-* **Ground agent responses in institutional documents** using **Retrieval-Augmented Generation (RAG)** backed by **ChromaDB** and `qwen3-embedding:0.6b` over the *MOHE Computing Award Handbook*.
-* **Deploy low-code agentic workflows** using **Docker** and **n8n**, connecting local Ollama models to external cloud services (**Google Calendar API** via OAuth 2.0).
+The laboratory then illustrates how to:
+* Attach specific Python tools to our on-device LLM, adhering to defined tool-calling syntaxes (llm.bind_tools()).
+*Control native Windows programmes (calc.exe, notepad.exe) and manipulate files using a range of Python libraries, including: pyautogui, pygetwindow, subprocess and glob.
+* Develop a two-part agent memory system – both transient in-memory conversational memory and long-term SQLite database (student_memory.db) memory.
+*Anchor an agent’s outputs in organisational information by utilising Retrieval-Augmented Generation (RAG) with the aid of ChromaDB and qwen3-embedding:0.6b, applied to the MOHE Computing Award Handbook.
+* Establish easy-to-use agent processes using n8n and Docker. These facilitate linkage between on-device Ollama models and external cloud API services (including Google Calendar API accessed by OAuth 2.0).
 
 ---
 
@@ -68,7 +68,7 @@ Lab 06 - Tool-Using AI Agents & n8n Automation/
 
 ## ⚙️ 3. Environment Setup & Model Verification
 
-Before developing the agents, the virtual environment (`rag_env`) was configured with LangChain, ChromaDB, PDF parsing, and Windows GUI automation packages:
+Agents were created after setting up the environment using the following tools; LangChain, ChromaDB, PDF parser and Windows GUI automation:
 
 ```powershell
 # Install required libraries
@@ -79,8 +79,9 @@ ollama list
 ```
 
 ### Verified Local Models
-* **`llama3.2:3b`** (`2.0 GB`) — Primary reasoning and tool-calling LLM (`temperature=0` for deterministic JSON tool argument generation).
-* **`qwen3-embedding:0.6b`** (`639 MB`) — Dense embedding model used for vectorizing PDF chunks in Part C.
+llama3.2:3b (2.0 GB) – Used as ‘think’ and tool calling LLM. Deterministic JSON based tool arguments are created by setting temperature to 0.
+
+qwen3-embedding:0.6b (639MB) – This is a dense vector model which is used on PDF sections in Part C.
 
 ![Environment Setup and Ollama Model Verification](screenshots/Ollama_setup_success.png)
 
@@ -266,7 +267,10 @@ During implementation and testing, three key technical issues were encountered a
 
 ## 🎓 11. Conclusion & Architectural Reflection
 
-This laboratory successfully demonstrated the progression from passive text generation to **action-oriented, stateful AI systems**:
-* **Code-First Agents (LangChain + Python):** Provide fine-grained programmatic control over OS automation (`pyautogui`), custom SQLite schemas, and local ChromaDB RAG pipelines—ideal for custom desktop assistants and offline institutional deployments.
-* **Workflow-First Agents (n8n + Docker):** Significantly accelerate integration with third-party cloud APIs (such as Google Calendar OAuth 2.0) through visual node orchestration, built-in memory buffers, and real-time execution inspection logs.
-* **Local Privacy:** Running `llama3.2:3b` and `qwen3-embedding:0.6b` locally via Ollama ensured zero external LLM API costs and complete data privacy for student records and university handbooks.
+This laboratory effectively illustrated the transition from basic LLMs to more advanced, state-aware agents:
+Enable highly configurable control of computer functions (for example, pyautogui), bespoke SQLite databases and in-device ChromaDB RAG. Consequently, such agents are well suited to both bespoke personal computer agents and for on-site university usage.
+Workflow-First Agents (n8n + Docker)
+Facilitate substantially faster linkage to external cloud APIs (for instance, Google Calendar API accessed by OAuth 2.0). This is achieved using a graphical interface to design agent processes, alongside integrated memory functionality and live process monitoring.
+Local Data Security
+Executing llama3.2:3b and qwen3-embedding:0.6b on-device via Ollama also avoided any incurred charges for external LLM APIs and guaranteed the confidentiality of both student and university handbook data.
+
