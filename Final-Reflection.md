@@ -1,5 +1,3 @@
----
-
 # Final Reflection: From Statistical Text Models to Autonomous Local AI Agents
 
 **Module:** PUSL 3205 — Large Language Models and Generative AI  
