@@ -53,7 +53,6 @@ Many university students purchase too much food, and then either forget or are u
 * **`screenshots/02-ui-inventory-dashboard.png`** — *My Pantry* UI mock-up displaying categorized food items, freshness/expiry indicators, waste/savings summary, and *Use Soon* alerts.
 * **`screenshots/03-ui-llm-recipe-assistant.png`** — *AI Recipe Assistant* UI mock-up illustrating a generated recipe (*Creamy Spinach & Cheese Toast*) created from expiring pantry items.
 * **`screenshots/04-ui-student-marketplace.png`** — *Campus Food Marketplace* UI mock-up showcasing free and low-cost student listings with distance, seller ratings, and item tags.
-* **`screenshots/05-llm-brainstorming-evidence.png`** — Screenshot capturing our LLM brainstorming interaction used to define student cooking constraints and refine FoodLoop's features.
 
 ---
 
