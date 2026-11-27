@@ -1,20 +1,20 @@
 # PUSL 3205 – Large Language Models and Generative AI
 
-## Lab 01: Sentiment Analysis Using Traditional Machine Learning (BOW & TF-IDF)
+## Lab 01 – Sentiment Analysis (BOW and TF-IDF)
 
 ### Objective
 
-To perform sentiment analysis on customer reviews using traditional machine learning techniques. This practical focuses on text preprocessing, feature extraction using Bag of Words (BOW) and TF-IDF, and training machine learning models to classify reviews as positive or negative.
+The aim of this lab was to construct a sentiment analysis system using traditional machine learning. Within this, I focussed on text preprocessing, feature creation (Bag of Words and TF-IDF), and construction of models to determine if a customer review was positive or negative.
 
 ### 1. Dataset Loading and Integration
 
-Used the UCI Sentiment Labelled Sentences Dataset, which contains reviews from three different sources:
+I analysed a dataset called the UCI Sentiment Labelled Sentences Dataset comprising of customer reviews from three sources:
 
 - Amazon
 - IMDb
 - Yelp
 
-Loaded the three text files using Pandas and combined them into a single dataset.
+I utilised Pandas to load the data and merge it together.
 
 **Dataset details:**
 - Total records: 3,000
@@ -24,18 +24,18 @@ Loaded the three text files using Pandas and combined them into a single dataset
 
 ### 2. Text Preprocessing
 
-Applied the following preprocessing steps to clean the review text:
+As part of processing the data, I undertook the following steps to preprocess the customer reviews.
 
 - Converted all text into lowercase.
 - Removed numbers, punctuation and special characters using regular expressions.
 - Removed extra whitespace.
-- Created a new column containing the cleaned text.
+- Generated a new column containing preprocessed text.
 
-Compared the original sentences with the preprocessed sentences to check the changes.
+Furthermore, I analysed some original and preprocessed text to observe the effects of text preprocessing.
 
 ### 3. Exploratory Data Analysis (EDA)
 
-Explored the dataset to understand the differences between positive and negative reviews.
+I analysed my dataset to investigate the customer review data. In particular, I aimed to highlight frequently occurring words within both positive and negative reviews.
 
 - Displayed sample positive and negative reviews.
 - Removed common English stop words using NLTK.
@@ -53,7 +53,7 @@ Separated the cleaned text and sentiment labels into training and testing datase
 
 ### 5. Feature Extraction
 
-Converted the text data into numerical features using two vectorization techniques.
+As machine learning systems cannot analyse text directly, I generated numerical features from the customer reviews. Two methods were employed to do this:
 
 **Bag of Words (BOW)**
 - Used `CountVectorizer()`.
@@ -96,9 +96,7 @@ Also generated a classification report and confusion matrix to examine the model
 
 ### 8. Sentiment Prediction on New Reviews
 
-Tested the trained Logistic Regression model using four new customer reviews.
-
-Each review was passed through the same preprocessing and BOW transformation steps before making predictions.
+Finally, I analysed four additional customer reviews which had not been included in my original data set. As with my existing data, these were preprocessed and transformed using BOW prior to sentiment prediction.
 
 **Prediction Results**
 
@@ -111,4 +109,6 @@ Each review was passed through the same preprocessing and BOW transformation ste
 
 ### Conclusion
 
-Successfully completed the sentiment analysis practical using traditional machine learning techniques. Practised text preprocessing, exploratory data analysis, feature extraction using BOW and TF-IDF, and training classification models. The Logistic Regression model achieved an accuracy of 81.17% on the testing dataset.
+Throughout this lab I developed my knowledge of traditional machine learning based sentiment analysis. I learnt how to preprocess text, undertake exploratory data analysis, and generate features using both BOW and TF-IDF. Furthermore, I constructed models for classifying data.
+
+My Logistic Regression model had an 81.17% test data analysis accuracy. I also learnt how to apply my trained model to analyse the sentiment of new customer reviews.
