@@ -8,21 +8,21 @@
 The objective of **Lab 02** was to apply Large Language Models (LLMs) and complementary machine learning techniques to solve an everyday challenge faced by university students, fostering critical thinking, structured product design, and practical AI integration.
 
 ### Assigned Challenge: Group 3 — The Food Waster
-University students frequently buy more groceries than they can consume, forget perishable items stored in shared refrigerators or hostels, and discard usable leftovers due to a lack of meal ideas. Simultaneously, fellow students on campus actively seek affordable, ready-to-eat meals and low-cost groceries.
+Students often purchase excessive amounts of food, forget what they have placed in communal fridges and hostel fridges and also throw away still edible food as they struggle to think of ideas for meals. Additionally, students across a university strive to source cheap consumable food and inexpensive foodstuffs.
 
 ---
 
 ## 2. Lab Session Execution & Development Workflow
 
-During the lab session, our group partnered with an LLM as an interactive product-development collaborator to move from problem framing to system architecture and UI prototyping:
+In the lab, our group worked together with an LLM to design a solution to the above issue and developed an AI based product as follows:
 
-1. **Problem Decomposition & Persona Alignment:** We used iterative LLM prompting to analyze student grocery habits—specifically identifying dorm/boarding-house constraints (limited cooking equipment, tight budgets, and busy lecture schedules).
-2. **Architectural Separation of Concerns (ML vs. LLM):** Through critical evaluation, our group separated deterministic numerical prediction from generative language tasks rather than relying on an LLM for every function:
-   * **Computer Vision / Barcode Parsing:** Automates item and quantity entry from receipts, barcodes, or food photos.
-   * **Random Forest Regressor (Tabular ML):** Learns individual purchase, consumption, and waste patterns over time to recommend realistic future shopping quantities.
-   * **LLM Assistant (Generative AI):** Generates step-by-step student recipes from expiring pantry items and drafts clear, safety-tagged descriptions for surplus marketplace listings.
-3. **Prototyping & Visual Mock-ups:** We translated the architecture into end-to-end wireframes covering pantry tracking, AI recipe generation, and a campus peer-to-peer food sharing marketplace.
-4. **Pitch Preparation:** We synthesized the problem, technical workflow, and AI roles into a structured 2–3 minute group presentation.
+1. **Problem Decomposition & Persona Alignment:** Using multiple prompts, we interrogated student behaviour regarding food purchasing. This highlighted student housing related limitations including poor cooking facilities, limited finances, and high workloads.
+2. **Designing Appropriate ML and Generative AI Tools** Careful consideration allowed us to distinguish between prescriptive quantitative and generative qualitative tools. Thus, rather than utilising an LLM for all areas of the product, we used:
+   * **Computer Vision and Barcode Recognition: ** Automatically recognise and input food and associated amounts from receipts, barcodes and/or photographs of food.
+   * **Random Forest Regressor (Tabular ML):** Identify people’s food purchasing, consumption and wastage trends and advise on appropriate future food buying volumes.
+   * **LLM (Generative AI): ** Create sequential student recipes using soon-expiring food within their pantry. Furthermore, it can formulate concise and clearly-labelled (safe) information for students to list on the Campus Food Marketplace.
+3. **Prototyping & Visual Mock-ups:** We then devised complete wireframe designs for the following app functionality – inventory management, AI recipe creation and campus food gifting/trading.
+4. **Presentation Development:**Our group compiled a 2-3 minute presentation encapsulating our analysis, design process and the application of AI.
 
 ---
 
@@ -31,8 +31,10 @@ During the lab session, our group partnered with an LLM as an interactive produc
 **FoodLoop** is an AI-powered mobile application designed to minimize student food waste while connecting surplus food with budget-conscious peers on campus.
 
 ### Target Users
-* **Primary Users:** University students living in hostels, boarding houses, or shared apartments who manage their own groceries and frequently lose track of perishables.
-* **Secondary Users:** Students seeking affordable, safe surplus meals or unopened bulk ingredients within walking distance on campus.
+* **Main Users:** Students residing in hostels, boarding houses and/or shared housing that self-manage their food and commonly misremember what they have.
+* **Secondary Users:** Students looking for cheap and safe food to gift or to buy, especially within local on-campus areas.
+Product Components
+
 
 ### Core System Modules
 
@@ -59,10 +61,10 @@ All visual artifacts generated and documented during the lab session are stored 
 
 ## 5. Ethical, Safety & Practical Guardrails Considered
 
-During our group discussion, we established three design guardrails to ensure real-world viability:
-1. **Food Safety in Peer Sharing:** Marketplace listings require clear preparation/expiry timestamps, dietary/allergen tags, and restrictions limiting cooked-food sharing to same-day portions alongside unopened packaged goods.
-2. **Practical Student Constraints:** The LLM recipe prompt explicitly restricts suggestions to basic dorm equipment (microwave, kettle, single hob/pan) and under 20 minutes of preparation time.
-3. **Cold-Start Fallback for ML:** Because the Random Forest Regressor requires personal purchase-and-waste history, new users start with baseline single-student portion heuristics until sufficient weekly logs are recorded.
+Our group recognised and defined key considerations that should be adhered to when designing the product for successful operation:
+1. **Food Marketplace Safety: **  Listings must specify when food was prepared and its expiry date. Furthermore, they must include food and allergy relevant information. Finally, only students may gift freshly prepared food and this must be in single portions for the same day. Sealed foodstuffs may also be gifted.
+2. **Student Operational Limitations: ** The LLM recipe advisor is prompted to only provide recipes that can be prepared with simple student housing cooking appliances (microwave, kettle and one hob/pan) and within under 20 minutes.
+3. **Cold-Start Fallback for ML:** As the Random Forest Regressor depends on an individual’s food buying and wastage information, novices initially receive generic one person serving size guidelines. Appropriate personal data is then analysed week-by-week.
 
 ---
 
