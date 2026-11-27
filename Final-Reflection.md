@@ -1,8 +1,5 @@
 ---
 
-### 2. `Final-Reflection.md` (`LLM-Practical-Portfolio/Final-Reflection.md`)
-
-```markdown
 # Final Reflection: From Statistical Text Models to Autonomous Local AI Agents
 
 **Module:** PUSL 3205 — Large Language Models and Generative AI  
